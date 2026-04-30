@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<Devices>
+
+    <Device type="custom" id="RainMachineHD12">
+        <Name>Rain Machine HD-12</Name>
+        <ConfigUI>
+            <Field id="connectionType" type="menu" defaultValue="Local" tooltip="Select the appropriate server connection type - local or cloud">
+                <Label>Server type:</Label>
+                <List>
+                    <Option value="Local">Local</Option>
+                    <Option value="Cloud">Cloud</Option>
+                </List>
+            </Field>
+            <Field id="ip_address_label" type="label" fontSize="med" alignText="center" visibleBindingId="connectionType" visibleBindingValue="Local">
+                <Label>Example 10.0.1.1</Label>
+            </Field>
+            <Field id="ip_address" type="textfield"  defaultValue="10.0.1.x" visibleBindingId="connectionType" visibleBindingValue="Local" tooltip="Enter the IP address of the Rain Machine. You should set up a static IP address for the device.">
+                <Label>Module IP Address:</Label>
+            </Field>
+
+            <Field id="portLabel" type="label" fontSize="small" visibleBindingId="connectionType" visibleBindingValue="Local">
+                <Label>If you are connecting to local network device, enter port</Label>
+            </Field>
+
+            <Field id="port" type="textfield" defaultValue="8080" visibleBindingId="connectionType" visibleBindingValue="Local" tooltip="Enter the port used by the Rain Machine. Default is 8080 for https or 8081 for http.">
+                <Label>Port:</Label>
+            </Field>
+            <!-- Authentication -->
+
+            <Field id="authTitle" type="label" alignText="right">
+                <Label>Authentication</Label>
+            </Field>
+
+            <Field id="authSep" type="separator"/>
+
+            <Field id="authLabel" type="label" fontSize="small">
+                <Label>If using local network access enter password, for remote cloud access enter the username and password </Label>
+            </Field>
+
+            <Field id="portSep" type="separator"/>
+
+            <Field id="httpLabel" type="label" fontSize="small" visibleBindingId="connectionType" visibleBindingValue="Local">
+                <Label>If you are connecting to local network device, use https or http - https preferred</Label>
+            </Field>
+
+            <Field id="https" type="checkbox" defaultValue="true" visibleBindingId="connectionType" visibleBindingValue="Local" tooltip="Enter the https or http connection used by the Rain Machine. Default is https.">
+                <Label>Use https:</Label>
+            </Field>
+
+            <Field id="username" type="textfield" tooltip="Enter email username for RainMachine cloud account." visibleBindingId="connectionType" visibleBindingValue="Cloud">
+                <Label>RainMachine cloud account username (email):</Label>
+            </Field>
+
+            <Field id="password" type="textfield" tooltip="Enter or paste a Password ID here." visibleBindingId="connectionType" secure="true" visibleBindingValue="Local, Cloud">
+                <Label>Password:</Label>
+            </Field>
+
+            <Field id="loginButton" type="button" tooltip="Click this button to test login and update controller list">
+	             <Label>Login and Update Controller List:</Label>
+	             <Title> login </Title>
+	             <CallbackMethod>loginDevices</CallbackMethod>
+            </Field>
+
+            <Field id="deviceMAC" type="menu" tooltip="Select device" visibleBindingId="connectionType" visibleBindingValue="Local, Cloud">
+                <Label>Device:</Label>
+                <List class="self" method="availableDevices" dynamicReload="true"/>
+            </Field>
+            -->
+        </ConfigUI>
+
+        <States>
+
+            <State id="active_watering">
+                <ValueType boolType="OnOff">Boolean</ValueType>
+                <TriggerLabel>Currently Watering</TriggerLabel>
+                <ControlPageLabel>Currently Watering</ControlPageLabel>
+            </State>
+
+            <State id="current_program">
+                <ValueType>String</ValueType>
+                <TriggerLabel>Current Program</TriggerLabel>
+                <ControlPageLabel>Current Program</ControlPageLabel>
+            </State>
+
+            <State id="current_zone">
+                <ValueType>String</ValueType>
+                <TriggerLabel>Current Zone</TriggerLabel>
+                <ControlPageLabel>Current Zone</ControlPageLabel>
+            </State>
+
+            <State id="minutes_left">
+                <ValueType>String</ValueType>
+                <TriggerLabel>Minutes left for current zone</TriggerLabel>
+                <ControlPageLabel>Minutes left for current zone</ControlPageLabel>
+            </State>
+
+            <State id="flowmeter">
+                <ValueType>String</ValueType>
+                <TriggerLabel>Gallons used</TriggerLabel>
+                <ControlPageLabel>Gallons used</ControlPageLabel>
+            </State>
+
+            <State id="device_online">
+                <ValueType boolType="OnOff">Boolean</ValueType>
+                <TriggerLabel>Device online?</TriggerLabel>
+                <ControlPageLabel>Device online?</ControlPageLabel>
+            </State>
+
+        </States>
+        <UiDisplayStateId>minutes_left</UiDisplayStateId>
+
+    </Device>
+
+</Devices>

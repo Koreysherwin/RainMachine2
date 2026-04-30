@@ -1,0 +1,12 @@
+RainMachine2 1.0.3 Indigo 2025.2 hardening notes
+
+Changes:
+- Added a one-time 3 second startup settle delay before first login.
+- Increased login retry attempts from 3 to 5.
+- Added 30 second per-attempt login timeout so a stuck cloud request does not hang plugin startup indefinitely.
+- Refreshed controller cache after successful login.
+- Centralized async execution through _run_async().
+- Added clearer error logging and device-offline handling when login fails.
+- Added safer controller lookup using saved MAC and current client controller cache.
+- Wrapped recurring update loop so one failed RainMachine/cloud update does not kill the plugin thread.
+- Kept plugin-local lib dependency loading for Indigo 2025.2 / Python 3.13.

@@ -1,0 +1,69 @@
+# Changelog
+
+All notable changes to the RainMachine2 Indigo plugin will be documented in this file.
+
+---
+
+## [1.0.4] - 2026-04-30
+
+### 🔧 Major Changes
+- Removed external dependencies (`regenmaschine`, `aiohttp`)
+- Replaced with native RainMachine REST implementation
+- No dependency installation or post-install scripts required
+
+### 🚀 Improvements
+- Full compatibility with Indigo 2025.2 and Python 3.13
+- Added startup delay to prevent early login failures
+- Implemented login retry logic for improved reliability
+- Improved error handling to prevent plugin crashes
+- More resilient polling loop (continues after transient failures)
+
+### 🧠 Reliability
+- Improved controller discovery and MAC handling
+- Reduced first-login failure scenarios
+- Better handling of intermittent RainMachine API responses
+
+### 🧼 Cleanup
+- Simplified plugin structure
+- Removed unused code and legacy imports
+- Streamlined initialization flow
+
+---
+
+## [1.0.3] - 2026-04-30
+
+### 🚀 Improvements
+- Added login retry logic (multiple attempts with delay)
+- Added startup delay to improve initial connection success
+- Improved error handling during API calls
+- Prevented update loop from terminating on failure
+
+### 🧠 Reliability
+- Improved controller recovery logic
+- Better logging for connection issues
+
+---
+
+## [1.0.2] - 2026-04-30
+
+### 🐛 Fixes
+- Fixed plugin startup failure due to missing `__file__` in Indigo environment
+- Improved path resolution for plugin-local libraries
+
+---
+
+## [1.0.1] - 2026-04-30
+
+### 🔧 Changes
+- Initial compatibility update for Indigo 2025.2 / Python 3.13
+- Added plugin-local dependency loading (`lib/` support)
+- Removed direct dependency on Indigo-bundled libraries
+
+---
+
+## [1.0.0]
+
+### 🎉 Initial Release
+- Basic RainMachine controller integration
+- Cloud login support
+- Device status and control
